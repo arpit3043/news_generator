@@ -8,4 +8,5 @@ class ContentWriter(ABC):
 
     @abstractmethod
     def write(self, articles: List[Article]) -> None:
+        """Abstract method to write a list of articles"""
         pass

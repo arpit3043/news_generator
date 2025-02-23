@@ -1,6 +1,6 @@
-requests
-beautifulsoup4
-feedparser
-python-dotenv
-cachetools
-praw
+requests==2.32.0
+beautifulsoup4==4.13.3
+feedparser==6.0.11
+python-dotenv==1.0.1
+cachetools==5.3.3
+praw==7.8.1
