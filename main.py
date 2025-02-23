@@ -16,7 +16,12 @@ def main():
         fetchers = [NewsAPIFetcher()]  # Initialize news fetchers
         aggregator = NewsContentAggregator(fetchers)  # Create aggregator instance
 
-        topics = ["startup", "entrepreneurship", "techology", "unicorn"]  # Define topics to fetch
+        topics = [
+            "startup",
+            "entrepreneurship",
+            "techology",
+            "unicorn",
+        ]  # Define topics to fetch
 
         articles = aggregator.fetch_all_content(topics)  # Fetch and aggregate articles
 

@@ -15,12 +15,16 @@ class NewsContentAggregator:
         self.fetchers = fetchers  # List of content fetchers
         self.config = ConfigManager()  # Load configuration settings
         self.seen_titles = {}  # Tracks seen article titles to avoid duplicates
-        self.articles_by_topic: Dict[str, List[Article]] = {}  # Organizes articles by topic
+        self.articles_by_topic: Dict[str, List[Article]] = (
+            {}
+        )  # Organizes articles by topic
 
     def fetch_all_content(self, topics: List[str]) -> List[Article]:
         """Fetches content for multiple topics concurrently"""
         all_articles = []
-        max_threads = self.config.get("MAX_THREADS", 4)  # Get max thread count from config
+        max_threads = self.config.get(
+            "MAX_THREADS", 4
+        )  # Get max thread count from config
 
         with ThreadPoolExecutor(max_workers=max_threads) as executor:
             # Submit fetching tasks for all fetchers and topics
@@ -35,7 +39,9 @@ class NewsContentAggregator:
                 fetcher, topic = future_to_task[future]
                 try:
                     articles = future.result()
-                    self._process_articles(articles, topic)  # Process and filter articles
+                    self._process_articles(
+                        articles, topic
+                    )  # Process and filter articles
                     all_articles.extend(articles)
                 except Exception as e:
                     raise NewsAggregatorError(

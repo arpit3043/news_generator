@@ -17,7 +17,9 @@ class FileWriter(ContentWriter):
         try:
             with open(self.filename, "w", encoding="utf-8") as file:
                 json.dump(
-                    [self._article_to_dict(article) for article in articles],  # Convert articles to dict
+                    [
+                        self._article_to_dict(article) for article in articles
+                    ],  # Convert articles to dict
                     file,
                     indent=2,
                     default=str,  # Ensure non-serializable objects (like datetime) are converted to strings
@@ -32,7 +34,9 @@ class FileWriter(ContentWriter):
             "url": article.url,
             "source": article.source,
             "published_at": (
-                article.published_at.isoformat() if article.published_at else None  # Convert datetime to string
+                article.published_at.isoformat()
+                if article.published_at
+                else None  # Convert datetime to string
             ),
             "topic": article.topic,
             "metadata": article.metadata,

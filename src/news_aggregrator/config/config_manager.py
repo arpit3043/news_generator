@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 from src.news_aggregrator.core.exceptions import ConfigurationError
 
+
 class ConfigManager:
     """Singleton configuration manager with enhanced validation"""
 
